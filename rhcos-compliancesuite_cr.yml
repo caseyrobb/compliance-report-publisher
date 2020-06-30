@@ -4,15 +4,10 @@ metadata:
   name: rhcos-compliancesuite
 spec:
   autoApplyRemediations: false
-  schedule: "0 1 * * *"
+  schedule: "5 * * * *"
   scans:
-    - name: rhcos-masters-scan
-      profile: xccdf_org.ssgproject.content_profile_moderate
-      content: ssg-rhcos4-ds.xml
-      contentImage: quay.io/complianceascode/ocp4:latest
-      nodeSelector:
-        node-role.kubernetes.io/master: ""
     - name: rhcos-workers-scan
+      scanType: Node
       profile: xccdf_org.ssgproject.content_profile_moderate
       content: ssg-rhcos4-ds.xml
       contentImage: quay.io/complianceascode/ocp4:latest
