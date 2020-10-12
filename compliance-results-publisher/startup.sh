@@ -68,13 +68,13 @@ function processScans() {
           <tbody>" > ${HTML_DIRECTORY}/${SCAN_NUMBER}/index_new.html
     
     shopt -s nullglob 
-    for f in ${HTML_DIRECTORY}/${SCAN_NUMBER}/*.base64
+    for f in ${HTML_DIRECTORY}/${SCAN_NUMBER}/*.bzip2
     do
       name=$(echo "$f" | grep -oP '(?!.*\/)(.*)[-]')
       if [ ! -f ${HTML_DIRECTORY}/${SCAN_NUMBER}/${name}result.html ]
       then
         log "Extracting file $f..."
-        base64 -d $f | bunzip2 > ${HTML_DIRECTORY}/${SCAN_NUMBER}/${name}result.xml
+        bunzip2 $f -c > ${HTML_DIRECTORY}/${SCAN_NUMBER}/${name}result.xml
     
         log "Converting file $f to html..."
         oscap xccdf generate report ${HTML_DIRECTORY}/${SCAN_NUMBER}/${name}result.xml > ${HTML_DIRECTORY}/${SCAN_NUMBER}/${name}result.html
