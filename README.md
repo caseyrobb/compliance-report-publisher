@@ -1,3 +1,5 @@
+[![Docker Repository on Quay](https://quay.io/repository/carobb/compliance-results-publisher/status "Docker Repository on Quay")](https://quay.io/repository/carobb/compliance-results-publisher)
+
 # OpenShift 4.x Complance Operator Demo
 
 ## Deploy the compliance operator
