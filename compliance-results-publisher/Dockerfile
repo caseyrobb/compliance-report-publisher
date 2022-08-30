@@ -1,9 +1,8 @@
-FROM registry.access.redhat.com/ubi8
+FROM registry.access.redhat.com/ubi9
 
 user 0
 
-RUN dnf copr enable -y openscapmaint/openscap-latest && \
-    dnf install -y nginx bzip2 procps scap-security-guide && \
+RUN dnf install -y nginx bzip2 openscap-scanner && \
     dnf update -y && \
     dnf clean all && \
     mkdir -p /opt/nginx/html
