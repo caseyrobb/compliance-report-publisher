@@ -30,7 +30,7 @@ spec:
         version: v1
     spec:
       containers:
-      - image: quay.io/kmendez/compliance-results-publisher
+      - image: quay.io/carobb/compliance-results-publisher
 #        env:
 #        - name: DEBUG
 #          value: "true"
