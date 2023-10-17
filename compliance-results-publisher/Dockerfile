@@ -1,10 +1,8 @@
-FROM registry.access.redhat.com/ubi9
+FROM ubi9/ubi-minimal
 
-user 0
-
-RUN dnf install -y nginx bzip2 openscap-scanner && \
-    dnf update -y && \
-    dnf clean all && \
+RUN microdnf install -y nginx bzip2 openscap-scanner && \
+    microdnf update -y && \
+    microdnf clean all && \
     mkdir -p /opt/nginx/html
     
 ENV HOME=/opt/nginx
@@ -18,6 +16,6 @@ ADD bootstrap /opt/nginx/bootstrap
 
 RUN chmod -R 775 /opt/nginx
    
-CMD /opt/nginx/startup.sh
-
 user 1001
+
+CMD /opt/nginx/startup.sh
